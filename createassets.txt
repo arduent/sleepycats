@@ -1,0 +1,59 @@
+
+TEST NETWORK
+
+Create Assets instructions:
+
+https://laboratory.stellar.org/
+choose test network
+
+Click Create Account
+Generate keypair button
+
+1) Create two accounts, one for issuer and one for distribution
+
+Issuer:
+PK: GAD4PQ2NW2G2FWNC5Y7OT2RABKOFE7DWN7GXQ6GW5CQJVLVINH2LCM6K
+SK: SAKSVVYJTI5ARVKDOA7JBARDIEBTMXHH3XVJHWP2BPLH3UEXC2PFP7MW
+
+Distribution:
+PK: GCGP4BKCYZOZ26XS6T2DEHINICD3QNL2PVAA3Q52GF5G5BILDDK2JLEV
+SK: SBZDGYM4ZVKB5CWAVYFL6ZJGEPP6PUZ5BKM4ZNL73ZCSZO364RDPPLNY
+
+2) Fund distribution account using the Friendbot (get 10,000 test lumens)
+
+3) Build a transaction with Create Account operation, 5 lumens from distribution account
+
+
+Create trustline to issuer account from distribution account 
+
+4) Build a Transaction, operation Change Trust, then enter asset code and issuer account id
+	sign transaction with distribution key
+
+WAGOTOKEN
+
+
+Add tokens to distributor account from issuer account
+
+5) Build Transaction, Payment operation
+asset code and issuer account id
+amount 250,000 (for example)
+
+Verify account balances using "Explore Endpoints"
+
+
+
+tnnewaccnt
+tnaccntbal
+tnsendwt
+
+
+{
+    "SK": "SA76BLABHKQFYZMDI4A4JPX27KHNHGSR6IGPKSW7WKB46UH6VLNJEF24",
+    "PK": "GDOIZQTQMWO5TYGQOT2AQUVGPNI6DWRAM7LSRXHEIDIL2Q7TRYDMIW6O"
+}
+{
+    "SK": "SC4DPUL6EMBXY5WDLG5V5HPRT3JZ2XFHLVGJPQAZDXPHE2DWWWNKQIUS",
+    "PK": "GATAC35HBABOTYL4FSVQ4G7OS7CRJTDA5SOSDPJD5MLSWDP3LGDHWMOF"
+}
+
+

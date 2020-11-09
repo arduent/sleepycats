@@ -1,0 +1,76 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://gfx/road1.png" type="Texture" id=1]
+[ext_resource path="res://gfx/night.png" type="Texture" id=2]
+[ext_resource path="res://gfx/road2.png" type="Texture" id=3]
+[ext_resource path="res://gfx/road3.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Road.gd" type="Script" id=6]
+[ext_resource path="res://scenes/Lights.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Kittens.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Logo.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/ScoreBanner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Tombstone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Login.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/LoginButton.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Acheivement.tscn" type="PackedScene" id=14]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "moving",
+"speed": 5.0
+} ]
+
+[node name="Road" type="Node"]
+script = ExtResource( 6 )
+
+[node name="Night" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 200, 406.413 )
+z_index = 10
+texture = ExtResource( 2 )
+
+[node name="Road" type="AnimatedSprite" parent="."]
+position = Vector2( 200, 404.878 )
+frames = SubResource( 1 )
+animation = "moving"
+frame = 1
+playing = true
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 271.446, 680 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Lights" parent="." instance=ExtResource( 7 )]
+position = Vector2( 231.761, 508.561 )
+scale = Vector2( 0.8, 0.8 )
+z_index = 20
+
+[node name="Kittens" parent="." instance=ExtResource( 8 )]
+position = Vector2( 70.1632, -44.0007 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Logo" parent="." instance=ExtResource( 9 )]
+
+[node name="ScoreBanner" parent="." instance=ExtResource( 10 )]
+
+[node name="Tombstone" parent="." instance=ExtResource( 11 )]
+position = Vector2( -5, -100 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="LoginButton" parent="." instance=ExtResource( 13 )]
+
+[node name="Login" parent="." instance=ExtResource( 12 )]
+visible = false
+z_as_relative = false
+
+[node name="Acheivement" parent="." instance=ExtResource( 14 )]
+
+[node name="MakeAchievement" type="HTTPRequest" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
